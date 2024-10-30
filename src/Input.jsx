@@ -1,3 +1,8 @@
+import { useEffect } from 'react'
+import submit from './assets/pokeball.svg'
+
+
+
 
 function Input(props ) {
 
@@ -9,13 +14,42 @@ function Input(props ) {
     let pokemons = props.pokemons
     let setPokemons = props.changePokemons
 
+
+    useEffect(() => {
+      const input = document.getElementById("myInput");
+  
+      const handleKeyPress = (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("btn").click();
+        }
+      };
+  
+      input.addEventListener("keypress", handleKeyPress);
+  
+      return () => {
+        input.removeEventListener("keypress", handleKeyPress); // Clean up event listener
+      };
+    }, []);
+   
+
+
+
+
     function addPokemon(pokemon) {
-      setPokeIndex([ ...pokeIndex , pokemon])
+      if(pokemon.trim() == '') {
+        return
+      }else{
+
+        setPokeIndex([  pokemon , ...pokeIndex ])
+
+      }
         }
         
 
 
         async function getNewPokemon(pokemon) {
+          if (pokemon.trim() == '')return;
              try {
                 const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon.toLowerCase())
                   if(!response.ok){
@@ -27,15 +61,16 @@ function Input(props ) {
             
 
 
-             setPokemons([...pokemons ,  pokeImg])
+             setPokemons([   pokeImg , ...pokemons])
 
              }
 
               catch (err) {
-                setPokemons([...pokemons ,  ""])
+                setPokemons([  "" , ...pokemons ])
 
                     console.error(err)
-              }
+                  }
+                  setPokemon("")
 
 
         }
@@ -45,17 +80,21 @@ function Input(props ) {
           return pokemon.charAt(0).toUpperCase() + pokemon.slice(1).toLowerCase()
         }
  
-        
+
 
 return(
 <>
+<div className="input">
+
 <input type="text"
    placeholder='Add your favorite Pokemon' 
+   id='myInput'
    onChange={(e)=> {setPokemon(e.target.value)}}
    value={pokemon}
-
+   
    />
-   <button className='btn' onClick={()=>{addPokemon(capitalizeFirstLetter(pokemon)) ; getNewPokemon(pokemon) ; setPokemon("")}}>Submit</button>
+   <button className='btn' id='btn' onClick={()=>{addPokemon(capitalizeFirstLetter(pokemon)) ; getNewPokemon(pokemon) ; setPokemon("")}}><img src={submit} alt='submit'/></button>
+   </div>
 
 </>
 

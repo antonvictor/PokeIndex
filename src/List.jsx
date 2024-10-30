@@ -1,4 +1,4 @@
-
+import deletepokemon from './assets/pokeball-off.svg'
 
 function List(props) {
 
@@ -20,10 +20,10 @@ function List(props) {
     return(
         <>
 
-<ul>
-   { PokeIndex.map((newPokemon , index) => { return <li key={index}>  {newPokemon}  <img src= {pokemons[index]} alt="" /> <button onClick={()=> {deletePokemon(index)}}>Delete</button> </li> })}
+    <ul>
+   { PokeIndex.map((newPokemon , index) => { return <li key={index}> <h2> {newPokemon} </h2> <img src= {pokemons[index]} alt="" /> <button onClick={()=> {deletePokemon(index)}}><img src={deletepokemon}/></button> </li> })}
 
-   </ul>
+    </ul>
         </>
     )
 }

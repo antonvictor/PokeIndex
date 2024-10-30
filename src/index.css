@@ -1,15 +1,125 @@
 
-button {
-    width: 100px;
+ body{
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+
+ button {
+    width: 50px;
     height: 50px;
+    border-style: none;
+    text-decoration: none;
+    background-color: transparent;
     }
     
     
-    li {
+    
+li {
         font-size: 20px;
+        height: 5vh;
+        width: 30vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        border: 1px solid black;
+        border-radius: 15px;
+        background-color: white;
+        padding: 10px;
+        
+}
+
+ul{
+    width: 50vw ;
+    max-height: calc(100vh - 400px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 20px;
+    overflow-y: auto;
+
+    scrollbar-width: thin; /* Minimal scrollbar on Firefox */
+    scrollbar-color: transparent transparent;
+}
+
+ul::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar on WebKit browsers */
+}
+
+ul:hover::-webkit-scrollbar {
+    width: 8px; /* Show scrollbar on hover */
+}
+
+ul:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Style the scrollbar thumb */
+    border-radius: 4px;
+}
+
+
+
+
+
+
+    h2{
+        color: black;  
+        width: 100%;
     }
 
     input {
         width: 300px;
-        height: 50px;
+        height: 100%;
+        border-radius: 15px;
+        padding: 0;
+        padding-left: 10px;
+        border: 0;
+        }
+
+
+    .background{
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        z-index: -1;
     }
+
+    .content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .header{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+button img{
+    height: 100%;
+    width: 100%;
+    }
+
+
+ button img:hover{
+    transform: scale3d(1.3 , 1.3 , 1.3);
+    transition: 0.2s;
+ }
+
+   
