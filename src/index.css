@@ -33,13 +33,14 @@ li {
 
 ul{
     width: 50vw ;
-    max-height: calc(100vh - 400px);
+    max-height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
     gap: 20px;
     overflow-y: auto;
+    z-index: 0;
 
     scrollbar-width: thin; /* Minimal scrollbar on Firefox */
     scrollbar-color: transparent transparent;
@@ -122,4 +123,6 @@ button img{
     transition: 0.2s;
  }
 
-   
+   li img{
+    z-index: 1;
+   }
